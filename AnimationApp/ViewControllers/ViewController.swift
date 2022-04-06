@@ -21,7 +21,6 @@ class ViewController: UIViewController {
     
     @IBOutlet var springButton: SpringButton!
     
-    
     // MARK: - Private Properties
     private var animation = Animation.setValue()
     
@@ -32,7 +31,7 @@ class ViewController: UIViewController {
     }
     
     // MARK: - IB Actions
-    @IBAction func runSpringAnimation(_ sender: SpringButton) {
+    @IBAction func runSpringAnimation() {
         let randomAnimation = animation.preset
         let randomCurve = animation.curve
         
@@ -44,6 +43,9 @@ class ViewController: UIViewController {
         
         springAnimationView.animation = randomAnimation
         springAnimationView.curve = randomCurve
+        springAnimationView.force = animation.force
+        springAnimationView.duration = animation.duration
+        springAnimationView.delay = animation.delay
         springAnimationView.animate()
 
         springButton.setTitle("Run + \(randomAnimation)", for: .normal)
